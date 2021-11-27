@@ -42,14 +42,11 @@ Inception_model.add(Dense(133, activation='softmax'))
 
 Inception_model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
-# Replace with path of the root directory
-mypath = 'E:/Udacity/Data Scientist/Core Curriculam/Capstone Project/'
-
 # Load the pre-trained model weights
-Inception_model.load_weights(mypath + 'Saved Models/weights.best.inception.hdf5')
+Inception_model.load_weights('../Saved Models/weights.best.inception.hdf5')
 
 # Load the cv2 model for human face detection
-face_cascade = cv2.CascadeClassifier(mypath + 'haarcascades/haarcascade_frontalface_alt.xml')
+face_cascade = cv2.CascadeClassifier('../haarcascades/haarcascade_frontalface_alt.xml')
 
 # Get the pre-trained ResNet50 model using ImageNet data
 # This model will be used to identify if the image is of a dog
