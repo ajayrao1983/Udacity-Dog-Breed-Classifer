@@ -1,15 +1,19 @@
 # Udacity-Dog-Breed-Classifer
 
+Link to GitHub repository - https://github.com/ajayrao1983/Udacity-Dog-Breed-Classifer
+
 ##Libraries Used:
 
-Data Reading and Saving in SQLlite database
 keras (version 2.3.1)
+
 cv2 
+
 numpy
+
 argparse 
 
 
-Folder Structure and Files in Repository
+##Folder Structure and Files in Repository
 .
 
 |--Saved Models
