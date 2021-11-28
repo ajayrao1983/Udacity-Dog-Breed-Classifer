@@ -78,8 +78,47 @@ We start with a small set of 6,680 dog images in our training set, out of a tota
 OpenCV's 'Haar feature-based cascade classifier' is used to detect human faces, while a ResNet50 model pre-trained on ImageNet dataset is used to detect dogs in the given image.
 We then pull a InceptionV3 network pre-trained on ImageNet dataset, and re-purpose it to classify dog breeds if a human or dog image is detected.
 We accomplish the transfer learning by removing the last layer of the InceptionV3 network, and appending a layer that is trained using 6,680 dog image datasets to detect dog breeds.
+I tried building 3 networks for the dog breed classifier with following accuracy scores:
+________________________________________________
+| Model                              | Accuracy |
+________________________________________________
+| CNN from scratch                   |      6%  |
+________________________________________________
+| Transfer learning with VGG16       |     48%  |
+________________________________________________
+| Transfer learning with InceptionV3 |     78%  |
+________________________________________________
 
-The trained network weights are saved in the 'Saved Models' folder to reuse in the app implementation.
+The trained network weights for Inceptionv3 are saved in the 'Saved Models' folder to reuse in the app implementation.
+
+## Analysis
+
+There are a total of 8,351 dog images which have been split into 6,680 images in our training set, 835 in the validation set and 836 in the testing set.
+The training set contains 133 dog breeds but it is unbalanced. If each category had the same number of images or observations, one would expect approx.. 50 images for each of the 133 dog breeds in the training set. However, there are some dog breeds that have over 70 images while some have less than 30. This could impact model performance on some of these dog breeds with lower samples to train on. 
+
+Another point to keep in mind is that, this is a more granular classification problem. We are no longer dealing with having to detect differences between species but go deeper and find differences within species. In other words, finding differences between dogs is a harder problem than finding differences between a dog and a cat. 
+
+Some dog breeds can be very similar which makes it harder for the model to differentiate between them. For example, ‘Brittany’ and ‘Welsh Springer Spaniel’ can look very similar and hence would be difficult to tell apart.  
+ 
+Some dog breeds can come in different colors, for example Yellow, Chocolate and Black Labradors.
+
+These further accentuates the problem, given that there is limited data to work with.
+
+## Conclusion
+
+I was able to build a model using transfer learning on pre-trained InceptionV3 model with an accuracy of 78% vs the goal of 60%. The model does a great job with 103 of 132 dog breeds in the test dataset with an accuracy of 60% or more.
+
+However, it struggles to make predictions for some dog breeds like Greyhound, Black and tan coonhound and Icelandic sheepdog with accuracy scores of 0%. These definitely need to be analyzed further.
+
+Given time and resources, I would have tried the following to improve the model performance generally (not specific to the three dog breeds mentioned above):
+•	Increase the training set
+
+•	Augment the data
+
+•	Oversample on dog breeds with less representation (have fewer examples in the training set)
+
+This was an interesting project to me as I was able to bring learnings from Advanced Machine Learning (Convolutional Neural Networks) and Data Scientist Nanodegree (Software/Data Engineering) programs together. By reusing a pre-trained image classification model, I was amazed to have built a model with only 6,680 images that performed with approx.. 80% accuracy.
+
 
 ##App Funcationality in more details
 
