@@ -3,14 +3,10 @@
 Link to GitHub repository - https://github.com/ajayrao1983/Udacity-Dog-Breed-Classifer
 
 ##Libraries Used:
-
-keras (version 2.3.1)
-
-cv2 
-
-numpy
-
-argparse 
+- keras (version 2.3.1)
+- cv2 
+- numpy
+- argparse 
 
 
 ##Folder Structure and Files in Repository
