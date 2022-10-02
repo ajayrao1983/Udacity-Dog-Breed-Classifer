@@ -93,10 +93,10 @@ We are designing an algorithm that takes an image as input and,
 3) informs the user if neither a dog or a human is detected
 
 A short summary of the steps taken to train the model is given below but please refer to the python notebook for more details. 
-We start with a small set of 6,680 dog images in our training set, out of a total of 8,351 dog images. 
-OpenCV's 'Haar feature-based cascade classifier' is used to detect human faces, while a ResNet50 model pre-trained on ImageNet dataset is used to detect dogs in the given image.
-We then pull a InceptionV3 network pre-trained on ImageNet dataset, and re-purpose it to classify dog breeds if a human or dog image is detected.
-We accomplish the transfer learning by removing the last layer of the InceptionV3 network, and appending a layer that is trained using 6,680 dog image datasets to detect dog breeds.
+* Step1: We start with a small set of 6,680 dog images in our training set, out of a total of 8,351 dog images. 
+* Step2: OpenCV's 'Haar feature-based cascade classifier' is used to detect human faces, while a ResNet50 model pre-trained on ImageNet dataset is used to detect dogs in the given image.
+* Step3: We then pull a InceptionV3 network pre-trained on ImageNet dataset, and re-purpose it to classify dog breeds if a human or dog image is detected. We accomplish the transfer learning by removing the last layer of the InceptionV3 network, and appending a layer that is trained using 6,680 dog image datasets to detect dog breeds.
+
 I tried building 3 networks for the dog breed classifier with following accuracy scores:
 ________________________________________________
 | Model                              | Accuracy |
@@ -121,7 +121,7 @@ Some dog breeds can be very similar which makes it harder for the model to diffe
  
 Some dog breeds can come in different colors, for example Yellow, Chocolate and Black Labradors.
 
-These further accentuates the problem, given that there is limited data to work with.
+This further accentuates the problem, given that there is limited data to work with.
 
 ## Conclusion
 
