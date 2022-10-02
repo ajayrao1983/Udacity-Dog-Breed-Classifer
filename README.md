@@ -3,10 +3,17 @@
 Link to GitHub repository - https://github.com/ajayrao1983/Udacity-Dog-Breed-Classifer
 
 ##Libraries Used:
+Python:
 - keras (version 2.3.1)
+- tensorflow
 - cv2 
 - numpy
 - argparse 
+
+R:
+- reticulate
+- shiny
+- shinydashboard
 
 
 ##Folder Structure and Files in Repository
@@ -18,7 +25,7 @@ Link to GitHub repository - https://github.com/ajayrao1983/Udacity-Dog-Breed-Cla
 
 |--haarcascades
 
-| |- haarcascade_frontalface_alt.xml # Has the categories for each message in the 'disaster_messages.csv' file. Categories are what we are trying to predict.
+| |- haarcascade_frontalface_alt.xml #Pre-trained open CV model for Human Face detection
 
 |--images # collection of images to test the app
 
@@ -54,9 +61,25 @@ Link to GitHub repository - https://github.com/ajayrao1983/Udacity-Dog-Breed-Cla
 
 | |- main.py # Flask web app
 
+|--DogBreedClassifieronShiny # Shiny Web App alternative
+
+| |-- helpers
+
+| | |- dog_breed_classifier.py #This is the main python code that calls the pre-trained model and does the classification
+
+| |-- model
+
+| | |- weights.best.inception.hdf5 #Same saved trained model weights but within the Shiny App framework
+
+| | |- haarcascade_frontalface_alt.xml #Same Pre-trained open CV model for Human Face detection but within the Shiny App framework
+
+| |-- temp #This folder is used to store the uploaded image file temporarily
+
+| |- app.R #This is the shiny app code
+
 |--dog_breed_classifier.py # Command line alternate app implementation
 
-|--dog_app_26Nov21.ipynb # Jupyter notebook if you want to train your classifier or test other classifiers
+|--dog_app_26Nov28.ipynb # Jupyter notebook if you want to train your classifier or test other classifiers
 
 |--README.md
 
@@ -129,3 +152,8 @@ Run the command: python main.py, in the 'app' folder
 Go to http://0.0.0.0:3001/ or http://localhost:3001/
 
 Upload the image to classify and click 'Submit'
+
+3) If using the Shiny App:
+Open app.R in R Studio. Install reticulate, shiny and shinydashboard packages in R.
+
+Assuming you have the necessary python setup as described at the start of this Readme file, you can render the app by clicking 'Run App'
